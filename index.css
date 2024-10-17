@@ -1,0 +1,13 @@
+body {
+	text-align: center;
+	display: flex;
+	width: 100%;
+}
+
+.Noah {
+	text-align: center;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
