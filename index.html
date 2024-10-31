@@ -1,174 +1,219 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Présentation des Personnes</title>
-    <style>
-        /* Style de base pour la page */
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f5f5f5;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Présentation des Personnes</title>
+		<style>
+			/* Style de base pour la page */
+			body {
+				font-family: Arial, sans-serif;
+				text-align: center;
+				background-color: #f5f5f5;
+				color: #333;
+				margin: 0;
+				padding: 0;
+			}
 
-        /* Style de la section d'accueil */
-        .welcome-section {
-            background-color: #00796b;
-            color: white;
-            padding: 40px 20px;
-            margin-bottom: 20px;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-        }
+			/* Style de la section d'accueil */
+			.welcome-section {
+				background-color: #00796b;
+				color: white;
+				padding: 40px 20px;
+				margin-bottom: 20px;
+				border-bottom-left-radius: 20px;
+				border-bottom-right-radius: 20px;
+				box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+			}
 
-        .welcome-title {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            animation: fadeIn 1.5s ease-in-out;
-        }
+			.welcome-title {
+				font-size: 32px;
+				font-weight: bold;
+				margin-bottom: 10px;
+				animation: fadeIn 1.5s ease-in-out;
+			}
 
-        .welcome-description {
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-            animation: fadeInUp 2s ease-in-out;
-        }
+			.welcome-description {
+				font-size: 18px;
+				max-width: 600px;
+				margin: 0 auto;
+				line-height: 1.6;
+				animation: fadeInUp 2s ease-in-out;
+			}
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+			/* Animations */
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
 
-        /* Style des boutons */
-        .button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            border: none;
-        }
-        #btnPerson1 {
-            background-color: #4CAF50;
-            color: white;
-        }
-        #btnPerson2 {
-            background-color: #008CBA;
-            color: white;
-        }
+			/* Style des boutons */
+			.button {
+				padding: 10px 20px;
+				margin: 10px;
+				font-size: 16px;
+				cursor: pointer;
+				border-radius: 5px;
+				border: none;
+			}
+			#btnPerson1 {
+				background-color: #4caf50;
+				color: white;
+			}
+			#btnPerson2 {
+				background-color: #008cba;
+				color: white;
+			}
 
-        /* Sections cachées au départ */
-        .person {
-            display: none;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 8px;
-            font-size: 18px;
-            text-align: left;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
+			/* Sections cachées au départ */
+			.person {
+				display: none;
+				padding: 20px;
+				margin-top: 20px;
+				border-radius: 8px;
+				font-size: 18px;
+				text-align: left;
+				max-width: 600px;
+				margin-left: auto;
+				margin-right: auto;
+				box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+				transition: transform 0.3s ease-in-out;
+			}
 
-        /* Thème informatique pour la première personne */
-        #person1 {
-            background-color: #e0f7fa;
-            color: #00796b;
-            background-image: url('https://em-content.zobj.net/source/microsoft-teams/337/desktop-computer_1f5a5-fe0f.png'), url('https://em-content.zobj.net/source/microsoft-teams/337/keyboard_2328.png');
-            background-size: 100px, 100px;
-            background-position: left top, right top;
-            background-repeat: no-repeat;
-        }
-        
-        /* Thème coloré pour la deuxième personne */
-        #person2 {
-            background-color: #ffe0b2;
-            color: #bf360c;
-        }
-        
-        /* Style spécifique à la présentation */
-        .intro-title {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .highlight {
-            color: #4CAF50;
-            font-weight: bold;
-        }
-        .tech-icon {
-            font-size: 22px;
-        }
-        /* Animation d'entrée de la section */
-        .person.show {
-            display: block;
-            transform: translateY(0);
-        }
-        .person.hidden {
-            transform: translateY(-50px);
-        }
-    </style>
-</head>
-<body>
+			/* Thème informatique pour la première personne */
+			#person1 {
+				background-color: #e0f7fa;
+				color: #00796b;
+				background-image: url("https://em-content.zobj.net/source/microsoft-teams/337/desktop-computer_1f5a5-fe0f.png"),
+					url("https://em-content.zobj.net/source/microsoft-teams/337/keyboard_2328.png");
+				background-size: 100px, 100px;
+				background-position: left top, right top;
+				background-repeat: no-repeat;
+			}
 
-    <!-- Section d'accueil créative -->
-    <div class="welcome-section">
-        <h1 class="welcome-title">👋 Bienvenue sur Notre Page de Présentation !</h1>
-        <p class="welcome-description">
-            Découvrez les parcours et passions de nos membres de notre groupe ! Cliquez sur chaque présentation
-            pour découvrir plus de détails sur nous. Nous espérons que vous apprécierez cette visite ! ✨
-        </p>
-    </div>
+			/* Thème coloré pour la deuxième personne */
+			#person2 {
+				background-color: #ffe0b2;
+				color: #bf360c;
+			}
 
-    <!-- Boutons pour afficher les présentations -->
-    <button id="btnPerson1" class="button" onclick="showPerson(1)">Voir Présentation Mathéo</button>
-    <button id="btnPerson2" class="button" onclick="showPerson(2)">Voir Présentation Noah</button>
+			/* Style spécifique à la présentation */
+			.intro-title {
+				font-size: 24px;
+				font-weight: bold;
+			}
+			.highlight {
+				color: #4caf50;
+				font-weight: bold;
+			}
+			.tech-icon {
+				font-size: 22px;
+			}
+			/* Animation d'entrée de la section */
+			.person.show {
+				display: block;
+				transform: translateY(0);
+			}
+			.person.hidden {
+				transform: translateY(-50px);
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Section d'accueil créative -->
+		<div class="welcome-section">
+			<h1 class="welcome-title">
+				👋 Bienvenue sur Notre Page de Présentation !
+			</h1>
+			<p class="welcome-description">
+				Découvrez les parcours et passions de nos membres de notre groupe !
+				Cliquez sur chaque présentation pour découvrir plus de détails sur nous.
+				Nous espérons que vous apprécierez cette visite ! ✨
+			</p>
+		</div>
 
-    <!-- Section pour la première personne -->
-    <div id="person1" class="person hidden">
-        <h2 class="intro-title">💻 Un passionné de Technologie et d'Innovation</h2>
-        <p>Bonjour ! Moi, c'est <span class="highlight">Mathéo</span>, un étudiant toujours en quête de <strong>nouvelles solutions</strong> et de <strong>technologies modernes</strong> ! 🌐</p>
-        <p>👨‍💻 Je suis fasciné(e) par le <strong>développement web</strong> et le <strong>design UX/UI</strong>, où je trouve un équilibre parfait entre technique et créativité.</p>
-        <p>⚙️ Ma boîte à outils comprend : <span class="tech-icon">HTML</span>, <span class="tech-icon">CSS</span>, <span class="tech-icon">JavaScript</span>… et bien plus encore.</p>
-        <p>📈 Mon objectif ? Créer des applications intuitives et élégantes pour améliorer la vie de chacun !</p>
-        <a href="#plus" class="see-more">En savoir plus</a>
-    </div>
+		<!-- Boutons pour afficher les présentations -->
+		<button id="btnPerson1" class="button" onclick="showPerson(1)">
+			Voir Présentation Mathéo
+		</button>
+		<button id="btnPerson2" class="button" onclick="showPerson(2)">
+			Voir Présentation Noah
+		</button>
 
-    <!-- Section pour la deuxième personne -->
-    <div id="person2" class="person hidden">
-        <h2>Présentation de la Personne Noah</h2>
-        <p>Salut ! Je suis un(e) créatif(ve) 🎨 qui aime l'art et l'illustration. Je passe mon temps à explorer différents styles et à exprimer des émotions à travers mes œuvres !</p>
-    </div>
+		<!-- Section pour la première personne -->
+		<div id="person1" class="person hidden">
+			<h2 class="intro-title">
+				💻 Un passionné de Technologie et d'Innovation
+			</h2>
+			<p>
+				Bonjour ! Moi, c'est <span class="highlight">Mathéo</span>, un étudiant
+				toujours en quête de <strong>nouvelles solutions</strong> et de
+				<strong>technologies modernes</strong> ! 🌐
+			</p>
+			<p>
+				👨‍💻 Je suis fasciné(e) par le <strong>développement web</strong> et le
+				<strong>design UX/UI</strong>, où je trouve un équilibre parfait entre
+				technique et créativité.
+			</p>
+			<p>
+				⚙️ Ma boîte à outils comprend : <span class="tech-icon">HTML</span>,
+				<span class="tech-icon">CSS</span>,
+				<span class="tech-icon">JavaScript</span>… et bien plus encore.
+			</p>
+			<p>
+				📈 Mon objectif ? Créer des applications intuitives et élégantes pour
+				améliorer la vie de chacun !
+			</p>
+			<a href="#plus" class="see-more">En savoir plus</a>
+		</div>
 
-    <script>
-        // Fonction pour afficher la présentation en fonction du bouton cliqué
-        function showPerson(personNumber) {
-            // Masquer toutes les sections
-            document.getElementById("person1").classList.remove("show");
-            document.getElementById("person2").classList.remove("show");
-            document.getElementById("person1").classList.add("hidden");
-            document.getElementById("person2").classList.add("hidden");
+		<!-- Section pour la deuxième personne -->
+		<div id="person2" class="person hidden">
+			<h2 class="intro-title">💻 Développeur Web junior</h2>
+			<p>
+				Bonjour ! Moi, c'est <span class="highlight">Noah</span>, je suis
+				étudiant à l'<strong>ESGI</strong> et alternant chez
+				<strong>ActuIA</strong> spécialiser dans le développement web! 🌐
+			</p>
+			<p>
+				⚙️ Je maitrise des technoligie tel que :
+				<span class="tech-icon">HTML</span>, <span class="tech-icon">CSS</span>,
+				<span class="tech-icon">PHP</span>,
+				<span class="tech-icon">MYSQL</span>,
+				<span class="tech-icon">JavaScript</span>… et bien plus encore.
+			</p>
+			<p>📈 Mon objectif ? Devenir riche!</p>
+		</div>
 
-            // Afficher la section de la personne choisie
-            const selectedPerson = document.getElementById("person" + personNumber);
-            selectedPerson.classList.add("show");
-            selectedPerson.classList.remove("hidden");
-        }
-    </script>
+		<script>
+			// Fonction pour afficher la présentation en fonction du bouton cliqué
+			function showPerson(personNumber) {
+				// Masquer toutes les sections
+				document.getElementById("person1").classList.remove("show");
+				document.getElementById("person2").classList.remove("show");
+				document.getElementById("person1").classList.add("hidden");
+				document.getElementById("person2").classList.add("hidden");
 
-</body>
+				// Afficher la section de la personne choisie
+				const selectedPerson = document.getElementById("person" + personNumber);
+				selectedPerson.classList.add("show");
+				selectedPerson.classList.remove("hidden");
+			}
+		</script>
+	</body>
 </html>
